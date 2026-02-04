@@ -1,0 +1,37 @@
+# Minimal dependencies for Lighthouse-only mode
+# This is all you need to get started!
+
+# FastAPI and Server
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+python-multipart==0.0.6
+pydantic>=2.7.4
+
+# LangGraph and LangChain (for AI recommendations - optional)
+# Leave these installed but they'll work without API keys
+langgraph==0.2.45
+langchain==0.3.7
+langchain-openai==0.2.9
+langchain-anthropic==0.2.4
+
+# Browser Automation (Required for Lighthouse)
+playwright==1.40.0
+
+# HTTP Client
+httpx==0.26.0
+
+# PDF Generation
+reportlab==4.0.7
+
+# Image Processing
+pillow==10.1.0
+
+# Environment & Config
+python-dotenv==1.0.0
+
+# Optional: For better data handling
+pandas==2.1.4
+
+# Optional: For testing
+pytest==7.4.3
+pytest-asyncio==0.23.2
