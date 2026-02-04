@@ -108,8 +108,9 @@ class ScreenshotAgent:
         page = await context.new_page()
 
         try:
-            await page.goto(url, wait_until='networkidle', timeout=60000)
-            await asyncio.sleep(2)  # Wait for animations
+            # Using 'domcontentloaded' for better reliability on cloud infrastructure
+            await page.goto(url, wait_until='domcontentloaded', timeout=90000)
+            await asyncio.sleep(3)  # Wait for animations and additional content
 
             # Sanitize URL for filename
             safe_url = url.replace('https://', '').replace('http://', '').replace('/', '_')[:50]
@@ -137,8 +138,9 @@ class ScreenshotAgent:
         page = await context.new_page()
 
         try:
-            await page.goto(url, wait_until='networkidle', timeout=60000)
-            await asyncio.sleep(2)
+            # Using 'domcontentloaded' for better reliability on cloud infrastructure
+            await page.goto(url, wait_until='domcontentloaded', timeout=90000)
+            await asyncio.sleep(3)
 
             # Sanitize URL for filename
             safe_url = url.replace('https://', '').replace('http://', '').replace('/', '_')[:50]

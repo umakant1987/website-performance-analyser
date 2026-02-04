@@ -83,7 +83,12 @@ class LighthouseAgent:
         """Collect performance metrics using Playwright"""
 
         # Navigate and wait for load
-        response = await page.goto(url, wait_until='networkidle', timeout=60000)
+        # Using 'domcontentloaded' instead of 'networkidle' for better reliability on cloud
+        # Increased timeout to 90s for slower cloud infrastructure
+        response = await page.goto(url, wait_until='domcontentloaded', timeout=90000)
+
+        # Wait for additional content to load
+        await asyncio.sleep(3)
 
         # Wait a bit more to ensure all metrics are collected
         await asyncio.sleep(2)
