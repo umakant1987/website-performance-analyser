@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: website-performance-analyzer-api
+    env: docker
+    region: oregon
+    plan: free
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        value: https://website-performance-analyser.vercel.app
+      - key: HOST
+        value: 0.0.0.0
+      - key: REPORTS_DIR
+        value: ./reports
+      - key: SCREENSHOTS_DIR
+        value: ./screenshots
